@@ -110,8 +110,8 @@ Contato via WhatsApp: ${bookingData.whatsapp}`
 
   const SectionTitle: React.FC<{ title: string; subtitle?: string }> = ({ title, subtitle }) => (
     <div className="text-center mb-12">
-      <h2 className="text-4xl font-serif text-gray-900 mb-4">{title}</h2>
-      {subtitle && <p className="text-gray-600 max-w-2xl mx-auto px-4">{subtitle}</p>}
+      <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4 px-4">{title}</h2>
+      {subtitle && <p className="text-gray-600 max-w-2xl mx-auto px-6 text-sm md:text-base">{subtitle}</p>}
       <div className="w-20 h-1 bg-agape-red mx-auto mt-6"></div>
     </div>
   );
@@ -246,8 +246,8 @@ Contato via WhatsApp: ${bookingData.whatsapp}`
                 alt="Adoração na Igreja Ágape"
               />
               <div className="relative z-10 text-center px-4">
-                <h1 className="text-5xl md:text-7xl font-serif mb-6 leading-tight">Bem-vindo à Ágape</h1>
-                <p className="text-xl md:text-2xl mb-10 font-light italic">"Onde o Amor de Deus Transforma Vidas"</p>
+                <h1 className="text-4xl md:text-7xl font-serif mb-6 leading-tight">Bem-vindo à Ágape</h1>
+                <p className="text-lg md:text-2xl mb-10 font-light italic">"Onde o Amor de Deus Transforma Vidas"</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button onClick={() => setActiveSection('schedule')} className="bg-agape-red hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg active:scale-95">Ver Programação</button>
                   <button onClick={() => setActiveSection('donations')} className="bg-white hover:bg-gray-100 text-agape-red px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg active:scale-95">Contribuir Online</button>
@@ -719,11 +719,6 @@ Contato via WhatsApp: ${bookingData.whatsapp}`
         @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
         .animate-slideIn { animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        
-        /* Otimizações mobile */
-        @media (max-width: 640px) {
-          .font-serif { font-size: 1.1em; }
-        }
       `}} />
     </div>
   );
