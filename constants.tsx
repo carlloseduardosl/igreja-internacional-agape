@@ -4,7 +4,7 @@ import { EventItem, CellGroup, Course, PastoralSlot, Ministry, SpecialEvent } fr
 
 // Componente de Logo oficial: Imagem da Igreja Internacional Ágape
 export const AgapeLogo = ({ className = "h-12 w-auto" }: { className?: string }) => (
-  <div className={`${className} flex items-center justify-center overflow-hidden`}>
+  <div className={`${className} flex items-center justify-center overflow-hidden ml-4`}>
     <img 
       src="https://iili.io/f4RBYzP.jpg" 
       alt="Logo Igreja Internacional Ágape" 
@@ -41,9 +41,42 @@ export const SPECIAL_EVENTS_DATA: SpecialEvent[] = [
 ];
 
 export const CELLS_DATA: CellGroup[] = [
-  { id: 'c1', name: 'Célula Boanerges', leader: 'André & Marina', location: 'Bairro Central', day: 'Terça-feira', time: '20:00', contact: '(11) 99999-0001' },
-  { id: 'c2', name: 'Célula Emanuel', leader: 'Pr. Carlos', location: 'Jardim das Flores', day: 'Quinta-feira', time: '19:30', contact: '(11) 99999-0002' },
-  { id: 'c3', name: 'Célula Águas Vivas', leader: 'Sara Lima', location: 'Vila Esperança', day: 'Terça-feira', time: '20:00', contact: '(11) 99999-0003' },
+  { 
+    id: 'c1', 
+    name: 'Célula Varre-Sai', 
+    leader: 'Pr. Marco Aurélio', 
+    location: 'Varre-Sai', 
+    day: 'Segunda-feira', 
+    time: '19:00', 
+    contact: '(22) 99913-5656' 
+  },
+  { 
+    id: 'c2', 
+    name: 'Célula Rubi', 
+    leader: 'Aline Moreira', 
+    location: 'Rua Platão Boechat, 97, Cehab', 
+    day: 'Terça-feira', 
+    time: '19:30', 
+    contact: '(22) 99848-3976' 
+  },
+  { 
+    id: 'c3', 
+    name: 'Célula RDE Universitária', 
+    leader: 'Daniel Garibaldi', 
+    location: 'Rua José de Assis Barbosa, Cehab', 
+    day: 'Terça-feira', 
+    time: '22:00', 
+    contact: '(22) 99894-7942' 
+  },
+  { 
+    id: 'c4', 
+    name: 'Célula Caminhando Com Jesus', 
+    leader: 'Carlos Eduardo', 
+    location: 'Rua Platão Boechat, 727, Cehab', 
+    day: 'Sexta-feira', 
+    time: '19:30', 
+    contact: '(22) 99848-4977' 
+  },
 ];
 
 export const COURSES_DATA: Course[] = [
@@ -72,7 +105,7 @@ export const MINISTRIES_DATA: Ministry[] = [
     id: 'm2',
     name: 'Entre Elas',
     tagline: 'Mulheres com Propósito',
-    description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lares e na sociedade.',
+    description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lres e na sociedade.',
     leader: 'Aline Moreira',
     meetingInfo: 'Segunda quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/women-church/600/400',

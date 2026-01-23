@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { AgapeLogo } from '../constants';
 
@@ -42,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
           <div className="flex items-center">
             <button 
               onClick={() => handleLinkClick('home')}
-              className="flex items-center focus:outline-none group -ml-2"
+              className="flex items-center focus:outline-none group"
               aria-label="Ir para o Início"
             >
               <div className="flex items-center justify-center transition-transform group-hover:scale-105">
