@@ -35,7 +35,8 @@ export const SPECIAL_EVENTS_DATA: SpecialEvent[] = [
     location: 'Chalé São Miguel – Valão do Cágado, Itaperuna',
     description: 'Inscrições até 31 de Janeiro!',
     image: 'https://iili.io/f4TWm9p.png',
-    category: 'retiro'
+    category: 'retiro',
+    whatsappLink: 'https://wa.me/5522998484977?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20o%20Retiro%20Ágape%202026.'
   }
 ];
 
@@ -46,29 +47,34 @@ export const CELLS_DATA: CellGroup[] = [
 ];
 
 export const COURSES_DATA: Course[] = [
-  { id: 'e1', title: 'Fundamentos da Fé', instructor: 'Pr. Marcos Souza', duration: '8 semanas', description: 'Conheça os pilares básicos do cristianismo e sua caminhada com Cristo.', image: 'https://picsum.photos/seed/faith/800/400' },
-  { id: 'e2', title: 'Liderança Ágape', instructor: 'Bpa. Helen', duration: '12 semanas', description: 'Formação para novos líderes de células e ministérios.', image: 'https://picsum.photos/seed/leader/800/400' },
-  { id: 'e3', title: 'Panorama Bíblico', instructor: 'Ev. Roberto', duration: '6 meses', description: 'Uma visão geral de Gênesis a Apocalipse.', image: 'https://picsum.photos/seed/bible/800/400' },
+  { 
+    id: 'e1', 
+    title: 'Módulo 1 - Introdução à teologia e a bíblia', 
+    instructor: 'Equipe Ágape', 
+    duration: '9 semanas', 
+    description: 'Módulo 1 - Introdução à teologia e a bíblia', 
+    image: 'https://iili.io/f4UMtoX.md.png' 
+  },
 ];
 
 export const MINISTRIES_DATA: Ministry[] = [
   {
     id: 'm1',
-    name: 'Homens Ágape',
+    name: 'Rede de Homens',
     tagline: 'Homens de Honra e Fé',
     description: 'Um espaço para homens crescerem em liderança bíblica, paternidade e integridade.',
-    leader: 'Pr. Carlos Eduardo',
-    meetingInfo: 'Último Sábado do mês às 08:00',
+    leader: 'Leonel Nunes',
+    meetingInfo: 'Primeira quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/men-church/600/400',
     color: 'bg-blue-900'
   },
   {
     id: 'm2',
-    name: 'Mulheres Ágape',
+    name: 'Entre Elas',
     tagline: 'Mulheres com Propósito',
     description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lares e na sociedade.',
-    leader: 'Pra. Eliane Castro',
-    meetingInfo: 'Segundas-feiras às 19:30',
+    leader: 'Aline Moreira',
+    meetingInfo: 'Segunda quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/women-church/600/400',
     color: 'bg-pink-800'
   },
@@ -77,27 +83,27 @@ export const MINISTRIES_DATA: Ministry[] = [
     name: 'Rede de Casais',
     tagline: 'Aliança Eterna',
     description: 'Fortalecendo casamentos através de princípios cristãos e momentos especiais de lazer.',
-    leader: 'Bpo. Ricardo & Helen',
-    meetingInfo: 'Eventos Bimestrais',
+    leader: 'Pr. Rondinério & Berenice',
+    meetingInfo: 'Terceira quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/couples-church/600/400',
     color: 'bg-red-900'
   },
   {
     id: 'm4',
-    name: 'Ágape Young',
+    name: 'Rede Ellos',
     tagline: 'Nascidos para Brilhar',
     description: 'Uma geração apaixonada por Jesus, com adoração extravagante e amizades reais.',
-    leader: 'Ev. Gabriel Lima',
+    leader: 'Pr. Saullinho e Pra. Layla',
     meetingInfo: 'Sábados às 19:30',
     image: 'https://picsum.photos/seed/youth-church/600/400',
     color: 'bg-indigo-700'
   },
   {
     id: 'm5',
-    name: 'Rede Kids',
+    name: 'Ágape Kids',
     tagline: 'Pequenos Discípulos',
     description: 'Ensino lúdico e bíblico para crianças de 0 a 12 anos em todos os nossos cultos.',
-    leader: 'Tia Bete & Equipe',
+    leader: 'Tia Janaína & Equipe',
     meetingInfo: 'Durante todos os Cultos',
     image: 'https://picsum.photos/seed/kids-church/600/400',
     color: 'bg-orange-500'

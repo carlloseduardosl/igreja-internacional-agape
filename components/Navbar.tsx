@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { AgapeLogo } from '../constants';
 
@@ -39,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
   return (
     <nav className="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
+        <div className="flex justify-between h-16">
           <div className="flex items-center">
             <button 
               onClick={() => handleLinkClick('home')}
@@ -47,17 +46,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
               aria-label="Ir para o Início"
             >
               <div className="flex items-center justify-center transition-transform group-hover:scale-105">
-                 <AgapeLogo className="h-10 w-auto" />
+                 <AgapeLogo className="h-8 w-auto" />
               </div>
             </button>
           </div>
           
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden md:flex items-center space-x-1">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className={`px-2 lg:px-3 py-2 text-[11px] lg:text-xs font-bold uppercase tracking-widest transition-all rounded-full ${
+                className={`px-2 py-1.5 text-[10px] lg:text-[11px] font-bold uppercase tracking-widest transition-all rounded-full ${
                   activeSection === item.id 
                     ? 'text-agape-red bg-red-50' 
                     : 'text-gray-500 hover:text-agape-red hover:bg-gray-50'
@@ -89,12 +88,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-2xl animate-slideIn">
-          <div className="px-4 pt-4 pb-6 space-y-2">
+          <div className="px-4 pt-4 pb-6 space-y-1">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className={`block w-full text-left px-4 py-4 text-sm font-bold uppercase tracking-widest rounded-2xl transition-all ${
+                className={`block w-full text-left px-4 py-3 text-xs font-bold uppercase tracking-widest rounded-xl transition-all ${
                   activeSection === item.id 
                     ? 'text-agape-red bg-red-50' 
                     : 'text-gray-600 bg-gray-50/50'

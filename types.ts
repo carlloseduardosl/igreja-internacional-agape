@@ -55,4 +55,5 @@ export interface SpecialEvent {
   description: string;
   image: string;
   category: 'conferencia' | 'retiro' | 'campanha' | 'outro';
+  whatsappLink?: string;
 }
