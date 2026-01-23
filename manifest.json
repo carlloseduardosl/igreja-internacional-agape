@@ -1,0 +1,19 @@
+
+{
+  "name": "Igreja Internacional Ágape",
+  "short_name": "Ágape",
+  "description": "Aplicativo oficial da Igreja Internacional Ágape - Itaperuna-RJ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#A30000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://iili.io/f4RBYzP.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

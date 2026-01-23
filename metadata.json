@@ -1,0 +1,14 @@
+{
+  "name": "Igreja Internacional Ágape",
+  "description": "Comunidade cristã focada no amor Ágape. Acompanhe cultos, eventos, células e faça agendamentos pastorais diretamente pelo celular.",
+  "short_description": "App oficial da Igreja Ágape em Itaperuna.",
+  "categories": [
+    "Lifestyle",
+    "Social"
+  ],
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
