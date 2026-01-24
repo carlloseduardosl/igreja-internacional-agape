@@ -39,7 +39,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
   return (
     <nav className="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-50 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Logo Alinhado à Esquerda */}
           <div className="flex items-center">
             <button 
               onClick={() => handleLinkClick('home')}
@@ -52,6 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
             </button>
           </div>
           
+          {/* Menu Desktop - Alinhado à Direita */}
           <div className="hidden md:flex items-center space-x-1">
             {menuItems.map((item) => (
               <button
@@ -68,6 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
             ))}
           </div>
 
+          {/* Botão do Menu Mobile - Alinhado à Direita */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}

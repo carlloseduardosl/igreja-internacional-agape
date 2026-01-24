@@ -4,7 +4,7 @@ import { EventItem, CellGroup, Course, PastoralSlot, Ministry, SpecialEvent } fr
 
 // Componente de Logo oficial: Imagem da Igreja Internacional Ágape
 export const AgapeLogo = ({ className = "h-12 w-auto" }: { className?: string }) => (
-  <div className={`${className} flex items-center justify-center overflow-hidden ml-4`}>
+  <div className={`${className} flex items-center justify-center overflow-hidden`}>
     <img 
       src="https://iili.io/f4RBYzP.jpg" 
       alt="Logo Igreja Internacional Ágape" 
@@ -85,8 +85,32 @@ export const COURSES_DATA: Course[] = [
     title: 'Módulo 1 - Introdução à teologia e a bíblia', 
     instructor: 'Equipe Ágape', 
     duration: '9 semanas', 
-    description: 'Módulo 1 - Introdução à teologia e a bíblia', 
+    description: 'Conheça o que é teologia e entenda a Bíblia, sua origem, estrutura e autoridade como Palavra de Deus.', 
     image: 'https://iili.io/f4UMtoX.md.png' 
+  },
+  { 
+    id: 'e2', 
+    title: 'Módulo 2 - Doutrinas fundamentais da fé Cristã', 
+    instructor: 'Equipe Ágape', 
+    duration: '9 semanas', 
+    description: 'Aprenda as principais verdades da fé cristã e fortaleça sua base espiritual e doutrinária.', 
+    image: 'https://iili.io/f4QK8mJ.png' 
+  },
+  { 
+    id: 'e3', 
+    title: 'Módulo 3 - Igreja, Vida Cristã e Ética', 
+    instructor: 'Equipe Ágape', 
+    duration: '9 semanas', 
+    description: 'Descubra o papel da Igreja e como viver a fé cristã de forma prática e ética no dia a dia.', 
+    image: 'https://iili.io/f4QKUzv.md.png' 
+  },
+  { 
+    id: 'e4', 
+    title: 'Módulo 4 - História da Igreja e Escatologia', 
+    instructor: 'Equipe Ágape', 
+    duration: '9 semanas', 
+    description: 'Conheça a caminhada histórica da Igreja e as promessas bíblicas sobre o futuro e a volta de Cristo.', 
+    image: 'https://iili.io/f4QKgXR.png' 
   },
 ];
 
@@ -105,7 +129,7 @@ export const MINISTRIES_DATA: Ministry[] = [
     id: 'm2',
     name: 'Entre Elas',
     tagline: 'Mulheres com Propósito',
-    description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lres e na sociedade.',
+    description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lares e na sociedade.',
     leader: 'Aline Moreira',
     meetingInfo: 'Segunda quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/women-church/600/400',
@@ -116,7 +140,7 @@ export const MINISTRIES_DATA: Ministry[] = [
     name: 'Rede de Casais',
     tagline: 'Aliança Eterna',
     description: 'Fortalecendo casamentos através de princípios cristãos e momentos especiais de lazer.',
-    leader: 'Pr. Rondinério & Berenice',
+    leader: 'Pr. Rondinerio e Berenice',
     meetingInfo: 'Terceira quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/couples-church/600/400',
     color: 'bg-red-900'
@@ -126,8 +150,8 @@ export const MINISTRIES_DATA: Ministry[] = [
     name: 'Rede Ellos',
     tagline: 'Nascidos para Brilhar',
     description: 'Uma geração apaixonada por Jesus, com adoração extravagante e amizades reais.',
-    leader: 'Pr. Saullinho e Pra. Layla',
-    meetingInfo: 'Sábados às 19:30',
+    leader: 'Pr. Saulinho e Layla',
+    meetingInfo: 'Todos os sábados às 19:30',
     image: 'https://picsum.photos/seed/youth-church/600/400',
     color: 'bg-indigo-700'
   },
@@ -136,8 +160,8 @@ export const MINISTRIES_DATA: Ministry[] = [
     name: 'Ágape Kids',
     tagline: 'Pequenos Discípulos',
     description: 'Ensino lúdico e bíblico para crianças de 0 a 12 anos em todos os nossos cultos.',
-    leader: 'Tia Janaína & Equipe',
-    meetingInfo: 'Durante todos os Cultos',
+    leader: 'Tia Janaína',
+    meetingInfo: 'Durante os cultos da nossa igreja',
     image: 'https://picsum.photos/seed/kids-church/600/400',
     color: 'bg-orange-500'
   }

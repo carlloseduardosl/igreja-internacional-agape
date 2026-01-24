@@ -11,14 +11,14 @@ import {
   PASTORS,
   AgapeLogo
 } from './constants';
-import { getDailyWord } from './services/geminiService';
+import { getDailyVerse } from './services/geminiService';
 import { SpecialEvent } from './types';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedEvent, setSelectedEvent] = useState<SpecialEvent | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
-  const [dailyWord, setDailyWord] = useState('Carregando palavra do dia...');
+  const [dailyVerse, setDailyVerse] = useState('Carregando versículo do dia...');
 
   // Donation State
   const [donationStep, setDonationStep] = useState<'form' | 'payment' | 'success'>('form');
@@ -38,12 +38,12 @@ const App: React.FC = () => {
   });
 
   useEffect(() => {
-    fetchDailyWord();
+    fetchDailyVerse();
   }, []);
 
-  const fetchDailyWord = async () => {
-    const word = await getDailyWord();
-    setDailyWord(word);
+  const fetchDailyVerse = async () => {
+    const verse = await getDailyVerse();
+    setDailyVerse(verse);
   };
 
   const handleBookingChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -196,11 +196,11 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Palavra do Dia */}
+            {/* Versículo do Dia */}
             <div className="py-12 px-6 bg-gray-50 border-b border-gray-100">
               <div className="max-w-3xl mx-auto text-center">
-                <h3 className="text-agape-red font-bold uppercase tracking-widest text-[10px] mb-4">Palavra Profética</h3>
-                <p className="text-lg md:text-xl text-gray-800 italic leading-relaxed font-serif">"{dailyWord}"</p>
+                <h3 className="text-agape-red font-bold uppercase tracking-widest text-[10px] mb-4">Versículo Diário</h3>
+                <p className="text-lg md:text-xl text-gray-800 italic leading-relaxed font-serif">{dailyVerse}</p>
               </div>
             </div>
 
@@ -306,10 +306,21 @@ const App: React.FC = () => {
               <SectionTitle title="Nossas Redes" />
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {MINISTRIES_DATA.map((m) => (
-                  <div key={m.id} className="p-8 bg-gray-50 border border-gray-100 rounded-xl text-center hover:bg-white hover:shadow-lg transition-all">
+                  <div key={m.id} className="p-8 bg-gray-50 border border-gray-100 rounded-xl text-center hover:bg-white hover:shadow-lg transition-all flex flex-col">
                     <div className="w-10 h-[2px] bg-agape-red mx-auto mb-4"></div>
                     <h3 className="text-xl font-serif mb-2">{m.name}</h3>
-                    <p className="text-gray-500 text-sm">{m.description}</p>
+                    <p className="text-gray-500 text-sm mb-6 flex-grow">{m.description}</p>
+                    
+                    <div className="pt-4 border-t border-gray-200 text-left space-y-2 mt-auto">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold text-agape-red uppercase tracking-wider">Líder(es)</span>
+                        <span className="text-sm text-gray-800 font-medium">{m.leader}</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold text-agape-red uppercase tracking-wider">Encontro</span>
+                        <span className="text-sm text-gray-800">{m.meetingInfo}</span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

@@ -4,18 +4,58 @@ import { GoogleGenAI } from "@google/genai";
 // Inicialização seguindo estritamente as diretrizes do SDK
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-export const getDailyWord = async () => {
+// Lista de versículos de reserva para garantir que o app nunca fique vazio
+// em caso de erro 429 (Limite de cota excedido) ou falta de internet.
+const fallbackVerses = [
+  '"O Senhor é o meu pastor; nada me faltará." - Salmo 23:1',
+  '"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça." - João 3:16',
+  '"Tudo posso naquele que me fortalece." - Filipenses 4:13',
+  '"O Senhor te abençoe e te guarde; o Senhor faça resplandecer o seu rosto sobre ti." - Números 6:24-25',
+  '"Mil cairão ao teu lado, e dez mil, à tua direita, mas tu não serás atingido." - Salmo 91:7',
+  '"Buscai primeiro o Reino de Deus e a sua justiça, e todas estas coisas vos serão acrescentadas." - Mateus 6:33',
+  '"Se Deus é por nós, quem será contra nós?" - Romanos 8:31',
+  '"O choro pode durar uma noite, mas a alegria vem pela manhã." - Salmo 30:5',
+  '"Deixo-vos a paz, a minha paz vos dou; não vo-la dou como o mundo a dá." - João 14:27',
+  '"O Senhor é a minha luz e a minha salvação; a quem temerei?" - Salmo 27:1',
+  '"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento." - Provérbios 3:5',
+  '"Ainda que eu andasse pelo vale da sombra da morte, não temeria mal algum." - Salmo 23:4',
+  '"Lâmpada para os meus pés é tua palavra e luz, para o meu caminho." - Salmo 119:105',
+  '"Alegrai-vos sempre no Senhor; outra vez digo: alegrai-vos." - Filipenses 4:4',
+  '"Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei." - Mateus 11:28'
+];
+
+export const getDailyVerse = async () => {
+  // Seleção determinística baseada no dia do mês para que todos os usuários 
+  // vejam o mesmo versículo caso a API falhe.
+  const dayOfMonth = new Date().getDate();
+  const fallbackIndex = dayOfMonth % fallbackVerses.length;
+  const staticVerse = fallbackVerses[fallbackIndex];
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: 'Dê uma palavra profética e curta (máximo 300 caracteres) de encorajamento baseada na Bíblia para os membros da Igreja Internacional Ágape hoje. Use um tom acolhedor e termine com uma citação bíblica curta.',
+      contents: 'Forneça um versículo bíblico inspirador e curto em português para hoje. O texto deve conter apenas o versículo entre aspas e a referência bíblica (Ex: "O Senhor é o meu pastor..." - Salmo 23:1).',
       config: {
         temperature: 0.8,
       }
     });
-    return response.text;
-  } catch (error) {
-    console.error("Erro ao buscar palavra diária:", error);
-    return "Que o amor de Deus (Ágape) preencha seu coração hoje. 'O Senhor é o meu pastor; nada me faltará.' (Salmo 23:1)";
+    
+    const verseText = response.text?.trim();
+    
+    // Validamos se a IA retornou algo útil
+    if (verseText && verseText.length > 10) {
+      return verseText;
+    }
+    
+    return staticVerse;
+  } catch (error: any) {
+    // Tratamento silencioso de erro de cota para o usuário final
+    if (error?.message?.includes("429") || error?.status === 429) {
+      console.info("Info: Limite de cota atingido. Usando versículo local programado.");
+    } else {
+      console.error("Erro técnico ao buscar versículo:", error);
+    }
+    
+    return staticVerse;
   }
 };
