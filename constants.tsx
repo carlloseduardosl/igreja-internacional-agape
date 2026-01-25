@@ -3,9 +3,20 @@ import React from 'react';
 import { EventItem, CellGroup, Course, PastoralSlot, Ministry, SpecialEvent } from './types';
 
 // Link oficial do Canal do YouTube da Igreja Internacional Ágape
-export const YOUTUBE_CHANNEL_ID = "UCG80N087Wn121D5xI1O-69Q"; // ID do canal para busca de live
-export const YOUTUBE_LIVE_EMBED_URL = `https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}`;
-export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@IgrejaÁgapeItaperuna";
+// ID oficial: UCPmwowaeyCeqJGvhkteKgiA
+export const YOUTUBE_CHANNEL_ID = "UCPmwowaeyCeqJGvhkteKgiA"; 
+
+/**
+ * URL de incorporação otimizada.
+ * O parâmetro 'origin' é fundamental para evitar o Erro 153/150 em dispositivos móveis e navegadores modernos.
+ */
+const getLiveUrl = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : '';
+  return `https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}&rel=0&modestbranding=1&enablejsapi=1&origin=${encodeURIComponent(origin)}`;
+};
+
+export const YOUTUBE_LIVE_EMBED_URL = getLiveUrl();
+export const YOUTUBE_CHANNEL_URL = `https://www.youtube.com/channel/${YOUTUBE_CHANNEL_ID}`;
 
 // Componente de Logo oficial: Imagem da Igreja Internacional Ágape
 export const AgapeLogo = ({ className = "h-12 w-auto" }: { className?: string }) => (
@@ -31,11 +42,15 @@ export const SCHEDULE_DATA: EventItem[] = [
   { id: '4', title: 'Oração', day: 'Segunda à Sexta', time: '06:00 às 07:00', description: 'Momento de entregar tudo nas mãos de Deus.', type: 'reuniao' },
 ];
 
+/**
+ * Eventos organizados cronologicamente.
+ * O primeiro evento da lista será exibido como destaque na página inicial.
+ */
 export const SPECIAL_EVENTS_DATA: SpecialEvent[] = [
   {
     id: 'se1',
     title: 'Grande Vigília',
-    date: '31 de Janeiro',
+    date: '31 de Janeiro de 2026',
     time: '19:00',
     location: 'Sítio Nova Aliança',
     description: 'Uma noite poderosa de clamor, adoração e busca intensa pela presença de Deus. Venha renovar suas forças e clamar pelo nosso ano de 2026!',
@@ -45,13 +60,23 @@ export const SPECIAL_EVENTS_DATA: SpecialEvent[] = [
   {
     id: 'se0',
     title: 'Retiro Ágape 2026',
-    date: '14 a 18 de Fevereiro',
-    time: 'Saída às 14:00',
+    date: '14 a 18 de Fevereiro de 2026',
+    time: 'Check-in à partir das 14:00',
     location: 'Chalé São Miguel – Valão do Cágado, Itaperuna',
     description: 'Inscrições até 31 de Janeiro!',
     image: 'https://iili.io/f4TWm9p.png',
     category: 'retiro',
     whatsappLink: 'https://wa.me/5522998484977?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20o%20Retiro%20Ágape%202026.'
+  },
+  {
+    id: 'se2',
+    title: 'Culto do Discipulado',
+    date: '19 de Março de 2026',
+    time: '19:30',
+    location: 'Igreja Internacional Ágape',
+    description: 'Um momento precioso de ensino e crescimento espiritual focado no chamado para o discipulado. Venha aprofundar suas raízes na Palavra e fortalecer sua caminhada cristã.',
+    image: 'https://iili.io/fP92VNs.jpg',
+    category: 'conferencia'
   }
 ];
 
@@ -156,7 +181,7 @@ export const MINISTRIES_DATA: Ministry[] = [
     id: 'm2',
     name: 'Entre Elas',
     tagline: 'Mulheres com Propósito',
-    description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lares e na sociedade.',
+    description: 'Comunhão e ensino para mulheres que buscam ser canal de bênção em seus lres e na sociedade.',
     leader: 'Aline Moreira',
     meetingInfo: 'Segunda quinta-feira do mês às 19:30',
     image: 'https://picsum.photos/seed/women-church/600/400',
