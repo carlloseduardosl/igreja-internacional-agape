@@ -372,7 +372,7 @@ const App: React.FC = () => {
 
             {/* Onde Estamos */}
             <div className="py-20 px-6 bg-white">
-              <div className="max-w-5xl mx-auto">
+              <div className="max-w-5xl mx-auto text-center">
                 <SectionTitle title="Onde Estamos" subtitle="Rua Mozart Bastos Soares, 1390 - Cehab, Itaperuna-RJ" />
                 <div className="h-[400px] w-full max-w-4xl mx-auto rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 mt-4">
                   <iframe 
@@ -380,6 +380,21 @@ const App: React.FC = () => {
                     src="https://www.google.com/maps?q=Rua+Mozart+Bastos+Soares+1390+Cehab+Itaperuna+RJ&output=embed" 
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
+                </div>
+                {/* Botão Como Chegar */}
+                <div className="mt-8">
+                  <a 
+                    href="https://www.google.com/maps/place/Igreja+internacional+%C3%81gape/@-21.1866173,-41.9051078,1511m/data=!3m1!1e3!4m10!1m2!2m1!1sRua+Mozart+Bastos+Soares+1390+Cehab+Itaperuna+RJ!3m6!1s0xbc604bc03f0f8d:0x92a191f74c1f921c!8m2!3d-21.1866173!4d-41.8960956!15sCjBSdWEgTW96YXJ0IEJhc3RvcyBTb2FyZXMgMTM5MCBDZWhhYiBJdGFwZXJ1bmEgUkpaMiIwcnVhIG1vemFydCBiYXN0b3Mgc29hcmVzIDEzOTAgY2VoYWIgaXRhcGVydW5hIHJqkgENZ29zcGVsX2NodXJjaJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOd2NIWXRXazEzRUFF4AEA-gEECB0QDg!16s%2Fg%2F11b6gqt4zd?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-agape-red text-white px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-red-700 transition-all shadow-xl active:scale-95"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Como Chegar
+                  </a>
                 </div>
               </div>
             </div>
