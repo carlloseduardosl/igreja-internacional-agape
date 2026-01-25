@@ -3,19 +3,20 @@ import React from 'react';
 import { EventItem, CellGroup, Course, PastoralSlot, Ministry, SpecialEvent } from './types';
 
 // Link oficial do Canal do YouTube da Igreja Internacional Ágape
-// ID oficial atualizado conforme solicitação: UCPmwowaeyCeqJGvhkteKgiA
+// ID do Canal: UCPmwowaeyCeqJGvhkteKgiA
 export const YOUTUBE_CHANNEL_ID = "UCPmwowaeyCeqJGvhkteKgiA"; 
 
 /**
- * URL de incorporação otimizada.
- * Utilizamos youtube-nocookie.com e parâmetros de origin/enablejsapi para 
- * aumentar a compatibilidade e tentar resolver o Erro 150/153.
+ * URL de incorporação ultra-compatível.
+ * 1. Usamos youtube-nocookie.com para evitar bloqueios de privacidade/cookies.
+ * 2. Usamos o endpoint de live_stream direto com o ID do canal.
+ * 3. Removemos 'origin' e 'enablejsapi' que costumam causar a "tela cinza" em 
+ *    alguns navegadores por falha na validação do handshake de segurança.
  */
 const getLiveUrl = () => {
-  if (typeof window === 'undefined') return '';
-  const origin = window.location.origin;
-  // O uso de youtube-nocookie as vezes contorna restrições de alguns navegadores
-  return `https://www.youtube-nocookie.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}&origin=${encodeURIComponent(origin)}&enablejsapi=1&rel=0&modestbranding=1&autoplay=0`;
+  // O endpoint /live_stream?channel= é a forma mais direta de buscar a live atual.
+  // Se não houver live, o YouTube mostrará uma mensagem padrão ou o último vídeo dependendo da conta.
+  return `https://www.youtube-nocookie.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}&rel=0&modestbranding=1&autoplay=0`;
 };
 
 export const YOUTUBE_LIVE_EMBED_URL = getLiveUrl();
