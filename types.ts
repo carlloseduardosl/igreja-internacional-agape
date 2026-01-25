@@ -13,9 +13,12 @@ export interface CellGroup {
   name: string;
   leader: string;
   location: string;
+  neighborhood?: string;
   day: string;
   time: string;
   contact: string;
+  latitude: number;
+  longitude: number;
 }
 
 export interface Course {

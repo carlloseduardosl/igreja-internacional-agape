@@ -2,6 +2,11 @@
 import React from 'react';
 import { EventItem, CellGroup, Course, PastoralSlot, Ministry, SpecialEvent } from './types';
 
+// Link oficial do Canal do YouTube da Igreja Internacional Ágape
+export const YOUTUBE_CHANNEL_ID = "UCG80N087Wn121D5xI1O-69Q"; // ID do canal para busca de live
+export const YOUTUBE_LIVE_EMBED_URL = `https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}`;
+export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@IgrejaÁgapeItaperuna";
+
 // Componente de Logo oficial: Imagem da Igreja Internacional Ágape
 export const AgapeLogo = ({ className = "h-12 w-auto" }: { className?: string }) => (
   <div className={`${className} flex items-center justify-center overflow-hidden`}>
@@ -28,6 +33,16 @@ export const SCHEDULE_DATA: EventItem[] = [
 
 export const SPECIAL_EVENTS_DATA: SpecialEvent[] = [
   {
+    id: 'se1',
+    title: 'Grande Vigília',
+    date: '31 de Janeiro',
+    time: '19:00',
+    location: 'Sítio Nova Aliança',
+    description: 'Uma noite poderosa de clamor, adoração e busca intensa pela presença de Deus. Venha renovar suas forças e clamar pelo nosso ano de 2026!',
+    image: 'https://iili.io/f6jtIqX.jpg',
+    category: 'campanha'
+  },
+  {
     id: 'se0',
     title: 'Retiro Ágape 2026',
     date: '14 a 18 de Fevereiro',
@@ -46,36 +61,48 @@ export const CELLS_DATA: CellGroup[] = [
     name: 'Célula Varre-Sai', 
     leader: 'Pr. Marco Aurélio', 
     location: 'Varre-Sai', 
+    neighborhood: 'Centro',
     day: 'Segunda-feira', 
     time: '19:00', 
-    contact: '(22) 99913-5656' 
+    contact: '(22) 99913-5656',
+    latitude: -20.9333,
+    longitude: -41.8667
   },
   { 
     id: 'c2', 
     name: 'Célula Rubi', 
     leader: 'Aline Moreira', 
     location: 'Rua Platão Boechat, 97, Cehab', 
+    neighborhood: 'Cehab',
     day: 'Terça-feira', 
     time: '19:30', 
-    contact: '(22) 99848-3976' 
+    contact: '(22) 99848-3976',
+    latitude: -21.206828,
+    longitude: -41.890664
   },
   { 
     id: 'c3', 
     name: 'Célula RDE Universitária', 
     leader: 'Daniel Garibaldi', 
     location: 'Rua José de Assis Barbosa, Cehab', 
+    neighborhood: 'Cehab',
     day: 'Terça-feira', 
     time: '22:00', 
-    contact: '(22) 99894-7942' 
+    contact: '(22) 99894-7942',
+    latitude: -21.205164,
+    longitude: -41.892445
   },
   { 
     id: 'c4', 
     name: 'Célula Caminhando Com Jesus', 
     leader: 'Carlos Eduardo', 
     location: 'Rua Platão Boechat, 727, Cehab', 
+    neighborhood: 'Cehab',
     day: 'Sexta-feira', 
     time: '19:30', 
-    contact: '(22) 99848-4977' 
+    contact: '(22) 99848-4977',
+    latitude: -21.208154,
+    longitude: -41.888945
   },
 ];
 
@@ -167,4 +194,4 @@ export const MINISTRIES_DATA: Ministry[] = [
   }
 ];
 
-export const PASTORS = ['Pr. Marco Aurélio', 'Pra. Simone', 'Pr. Carlos Eduardo'];
+export const PASTORS = ['Pr. Marco Aurélio', 'Pra. Simone'];
