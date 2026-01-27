@@ -11,11 +11,12 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
     Permissions-Policy = "camera=(), microphone=(), geolocation=*"
+    # X-Frame-Options removido para evitar conflitos com o player do YouTube em dispositivos móveis.
+    Content-Security-Policy = "frame-ancestors 'self' https://www.youtube.com https://www.youtube-nocookie.com;"
 
 [[headers]]
   for = "/manifest.json"

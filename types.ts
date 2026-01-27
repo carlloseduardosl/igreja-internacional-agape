@@ -57,6 +57,7 @@ export interface SpecialEvent {
   location: string;
   description: string;
   image: string;
-  category: 'conferencia' | 'retiro' | 'campanha' | 'outro';
+  // Added 'musical' to allow this category which is used in constants.tsx
+  category: 'conferencia' | 'retiro' | 'campanha' | 'musical' | 'outro';
   whatsappLink?: string;
 }

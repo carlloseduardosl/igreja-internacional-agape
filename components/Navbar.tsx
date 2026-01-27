@@ -10,7 +10,6 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Fecha o menu ao redimensionar para desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -29,6 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
     { id: 'teaching', label: 'Ensino' },
     { id: 'booking', label: 'Atendimento' },
     { id: 'donations', label: 'Doações' },
+    { id: 'settings', label: 'Ajustes' },
   ];
 
   const handleLinkClick = (id: string) => {
@@ -37,12 +37,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
   };
 
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-50 border-b border-gray-100">
+    <nav className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm fixed w-full z-50 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo Alinhado à Esquerda */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
             <button 
               onClick={() => handleLinkClick('home')}
               className="flex items-center focus:outline-none group"
@@ -54,16 +53,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
             </button>
           </div>
           
-          {/* Menu Desktop - Alinhado à Direita */}
           <div className="hidden md:flex items-center space-x-1">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleLinkClick(item.id)}
-                className={`px-2 py-1.5 text-[10px] lg:text-[11px] font-bold uppercase tracking-widest transition-all rounded-full ${
+                className={`px-3 py-1.5 text-[10px] lg:text-[11px] font-bold uppercase tracking-widest transition-all rounded-full ${
                   activeSection === item.id 
-                    ? 'text-agape-red bg-red-50' 
-                    : 'text-gray-500 hover:text-agape-red hover:bg-gray-50'
+                    ? 'text-agape-red bg-red-50 dark:bg-red-950/30' 
+                    : 'text-gray-500 dark:text-gray-400 hover:text-agape-red dark:hover:text-red-400 hover:bg-gray-50 dark:hover:bg-gray-800'
                 }`}
               >
                 {item.label}
@@ -71,11 +69,10 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
             ))}
           </div>
 
-          {/* Botão do Menu Mobile - Alinhado à Direita */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-3">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-agape-red focus:outline-none p-2"
+              className="text-gray-600 dark:text-gray-400 hover:text-agape-red dark:hover:text-red-400 focus:outline-none p-2"
               aria-label={isOpen ? "Fechar Menu" : "Abrir Menu"}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,9 +87,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-2xl animate-slideIn">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 shadow-2xl animate-slideIn">
           <div className="px-4 pt-4 pb-6 space-y-1">
             {menuItems.map((item) => (
               <button
@@ -100,8 +96,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
                 onClick={() => handleLinkClick(item.id)}
                 className={`block w-full text-left px-4 py-3 text-xs font-bold uppercase tracking-widest rounded-xl transition-all ${
                   activeSection === item.id 
-                    ? 'text-agape-red bg-red-50' 
-                    : 'text-gray-600 bg-gray-50/50'
+                    ? 'text-agape-red bg-red-50 dark:bg-red-950/30' 
+                    : 'text-gray-600 dark:text-gray-300 bg-gray-50/50 dark:bg-gray-800/50'
                 }`}
               >
                 {item.label}
