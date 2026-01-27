@@ -151,7 +151,6 @@ const App: React.FC = () => {
 
   const toggleSubNotif = (key: keyof typeof notifConfig) => {
     if (!notifConfig.master) return;
-    // Fix: Corrected typo 'setDonifConfig' to 'setNotifConfig'
     setNotifConfig(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
@@ -189,11 +188,10 @@ const App: React.FC = () => {
       return;
     }
     setIsLocating(true);
-    // Configurações refinadas para maximizar a precisão
     const geoOptions = {
-      enableHighAccuracy: true, // Força o uso de GPS se disponível
-      timeout: 15000,           // Espera até 15 segundos por um sinal de qualidade
-      maximumAge: 0             // Impede o uso de localização em cache (força leitura nova)
+      enableHighAccuracy: true, 
+      timeout: 15000,           
+      maximumAge: 0             
     };
 
     navigator.geolocation.getCurrentPosition(
@@ -443,7 +441,7 @@ const App: React.FC = () => {
     <button 
       onClick={(e) => { e.preventDefault(); if(!disabled) onClick(); }}
       disabled={disabled}
-      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 focus:outline-none ${active ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-600'} ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
+      className={`relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full transition-all duration-300 focus:outline-none ${active ? 'bg-green-500' : 'bg-gray-300 dark:bg-gray-600'} ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
     >
       <span className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-md transition-transform duration-300 ${active ? 'translate-x-6' : 'translate-x-1'}`} />
     </button>
@@ -1001,20 +999,20 @@ const App: React.FC = () => {
                 <SectionTitle title="Ajustes e Informações" subtitle="Gerencie suas preferências e saiba mais sobre o aplicativo." />
                 
                 <div className="space-y-6">
-                  {/* Seção de Tema Visua */}
-                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[32px] p-8 shadow-sm">
+                  {/* Seção de Tema Visual */}
+                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[32px] p-6 md:p-8 shadow-sm">
                     <div className="flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="p-4 bg-red-50 dark:bg-red-950/30 text-agape-red dark:text-red-400 rounded-2xl">
+                      <div className="flex items-center gap-4 flex-1 min-w-0">
+                        <div className="p-4 bg-red-50 dark:bg-red-950/30 text-agape-red dark:text-red-400 rounded-2xl flex-shrink-0">
                           {darkMode ? (
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                           ) : (
                             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l.707-.707M15.657 12a3.657 3.657 0 11-7.314 0 3.657 3.657 0 017.314 0z" /></svg>
                           )}
                         </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 dark:text-white">Modo Escuro</h3>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">Alterne entre o tema claro e escuro.</p>
+                        <div className="min-w-0">
+                          <h3 className="font-bold text-gray-900 dark:text-white truncate">Modo Escuro</h3>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">Alterne entre o tema claro e escuro.</p>
                         </div>
                       </div>
                       <ToggleSwitch active={darkMode} onClick={() => setDarkMode(!darkMode)} />
@@ -1022,15 +1020,15 @@ const App: React.FC = () => {
                   </div>
 
                   {/* Seção de Notificações */}
-                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[32px] p-8 shadow-sm overflow-hidden">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[32px] p-6 md:p-8 shadow-sm overflow-hidden">
                     <div className="flex items-center justify-between gap-4 mb-8">
-                      <div className="flex items-center gap-4">
-                        <div className="p-4 bg-red-50 dark:bg-red-950/30 text-agape-red dark:text-red-400 rounded-2xl">
+                      <div className="flex items-center gap-4 flex-1 min-w-0">
+                        <div className="p-4 bg-red-50 dark:bg-red-950/30 text-agape-red dark:text-red-400 rounded-2xl flex-shrink-0">
                           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
                         </div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 dark:text-white">Notificações</h3>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">Ativar ou desativar todos os alertas.</p>
+                        <div className="min-w-0">
+                          <h3 className="font-bold text-gray-900 dark:text-white truncate">Notificações</h3>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">Ativar ou desativar todos os alertas.</p>
                         </div>
                       </div>
                       <ToggleSwitch active={notifConfig.master} onClick={handleToggleMasterNotifications} />
@@ -1039,26 +1037,26 @@ const App: React.FC = () => {
                     <div className={`space-y-6 transition-all duration-500 ${!notifConfig.master ? 'pointer-events-none opacity-40' : ''}`}>
                       <div className="h-[1px] bg-gray-50 dark:bg-gray-700 w-full mb-6"></div>
                       
-                      <div className="flex items-center justify-between group">
-                        <div className="space-y-1">
-                          <h4 className="text-sm font-bold text-gray-800 dark:text-gray-200">Avisos Gerais</h4>
-                          <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold">Cultos e Mensagens Urgentes</p>
+                      <div className="flex items-center justify-between group gap-4">
+                        <div className="space-y-1 flex-1 min-w-0">
+                          <h4 className="text-sm font-bold text-gray-800 dark:text-gray-200 truncate">Avisos Gerais</h4>
+                          <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold truncate">Cultos e Mensagens Urgentes</p>
                         </div>
                         <ToggleSwitch active={notifConfig.general} onClick={() => toggleSubNotif('general')} disabled={!notifConfig.master} />
                       </div>
 
-                      <div className="flex items-center justify-between group">
-                        <div className="space-y-1">
-                          <h4 className="text-sm font-bold text-gray-800 dark:text-gray-200">Novos Eventos</h4>
-                          <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold">Agenda de Congressos e Retiros</p>
+                      <div className="flex items-center justify-between group gap-4">
+                        <div className="space-y-1 flex-1 min-w-0">
+                          <h4 className="text-sm font-bold text-gray-800 dark:text-gray-200 truncate">Novos Eventos</h4>
+                          <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold truncate">Agenda de Congressos e Retiros</p>
                         </div>
                         <ToggleSwitch active={notifConfig.events} onClick={() => toggleSubNotif('events')} disabled={!notifConfig.master} />
                       </div>
 
-                      <div className="flex items-center justify-between group">
-                        <div className="space-y-1">
-                          <h4 className="text-sm font-bold text-gray-800 dark:text-gray-200">Lembretes de Células</h4>
-                          <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold">Horários e locais das reuniões</p>
+                      <div className="flex items-center justify-between group gap-4">
+                        <div className="space-y-1 flex-1 min-w-0">
+                          <h4 className="text-sm font-bold text-gray-800 dark:text-gray-200 truncate">Lembretes de Células</h4>
+                          <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold truncate">Horários e locais das reuniões</p>
                         </div>
                         <ToggleSwitch active={notifConfig.cells} onClick={() => toggleSubNotif('cells')} disabled={!notifConfig.master} />
                       </div>
@@ -1073,12 +1071,12 @@ const App: React.FC = () => {
                   </div>
 
                   {/* Seção de Informações do App */}
-                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[32px] p-8 shadow-sm space-y-6">
+                  <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-[32px] p-6 md:p-8 shadow-sm space-y-6">
                     <div className="flex items-center gap-4 border-b border-gray-50 dark:border-gray-700 pb-6">
-                       <AgapeLogo className="h-8 w-auto" />
-                       <div>
-                         <h3 className="font-bold text-gray-900 dark:text-white">App Ágape Itaperuna</h3>
-                         <p className="text-xs text-gray-500 dark:text-gray-400">Versão 1.0.4 Stable</p>
+                       <AgapeLogo className="h-8 w-auto flex-shrink-0" />
+                       <div className="min-w-0">
+                         <h3 className="font-bold text-gray-900 dark:text-white truncate">App Ágape Itaperuna</h3>
+                         <p className="text-xs text-gray-500 dark:text-gray-400">Versão 1.0.5 Stable</p>
                        </div>
                     </div>
 
@@ -1095,10 +1093,10 @@ const App: React.FC = () => {
 
                     <a 
                       href="mailto:contato@agapeitaperuna.com.br" 
-                      className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-agape-red/20 transition-all group"
+                      className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-agape-red/20 transition-all group gap-4"
                     >
-                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest">Suporte & Feedback</span>
-                      <svg className="w-4 h-4 text-gray-400 group-hover:text-agape-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest truncate">Suporte & Feedback</span>
+                      <svg className="w-4 h-4 text-gray-400 group-hover:text-agape-red flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                     </a>
                   </div>
                 </div>
