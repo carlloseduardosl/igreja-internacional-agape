@@ -15,7 +15,7 @@ export const YOUTUBE_CHANNEL_URL = `https://www.youtube.com/channel/${YOUTUBE_CH
 export const AgapeLogo = ({ className = "h-12 w-auto" }: { className?: string }) => (
   <div className={`${className} flex items-center justify-center overflow-hidden`}>
     <img
-      src="https://iili.io/f4RBYzP.jpg"
+      src="https://iili.io/fsJj82S.png"
       alt="Logo Igreja Internacional Ágape"
       className="h-full w-auto object-contain"
     />
