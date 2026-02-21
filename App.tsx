@@ -11,9 +11,10 @@ import {
   PASTORS,
   AgapeLogo,
   YOUTUBE_LIVE_EMBED_URL,
-  YOUTUBE_CHANNEL_URL
+  YOUTUBE_CHANNEL_URL,
+  YOUTUBE_CHANNEL_ID
 } from './constants';
-import { getDailyVerse } from './services/geminiService';
+import { getDailyVerse, getLatestLiveStreamId } from './services/geminiService';
 import { SpecialEvent, CellGroup } from './types';
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
   const [selectedEvent, setSelectedEvent] = useState<SpecialEvent | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [dailyVerse, setDailyVerse] = useState('Carregando versículo do dia...');
+  const [liveVideoId, setLiveVideoId] = useState('live_stream');
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [notifStatus, setNotifStatus] = useState<NotificationPermission>('default');
   
@@ -75,6 +77,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     fetchDailyVerse();
+    fetchLiveStreamId();
     
     if ('Notification' in window) {
       setNotifStatus(Notification.permission);
@@ -105,6 +108,11 @@ const App: React.FC = () => {
   const fetchDailyVerse = async () => {
     const verse = await getDailyVerse();
     setDailyVerse(verse);
+  };
+
+  const fetchLiveStreamId = async () => {
+    const id = await getLatestLiveStreamId(YOUTUBE_CHANNEL_ID);
+    setLiveVideoId(id);
   };
 
   const scrollToTop = () => {
@@ -432,7 +440,15 @@ const App: React.FC = () => {
                   <h2 className="text-3xl md:text-4xl font-serif text-gray-900 dark:text-white">Ágape TV</h2>
                 </div>
                 <div className="relative aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden bg-black shadow-lg">
-                  <iframe src={YOUTUBE_LIVE_EMBED_URL} title="Live" className="absolute inset-0 w-full h-full border-0" allowFullScreen></iframe>
+                  <iframe 
+                    src={liveVideoId === 'live_stream' 
+                      ? `https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}` 
+                      : `https://www.youtube.com/embed/${liveVideoId}`
+                    } 
+                    title="Live" 
+                    className="absolute inset-0 w-full h-full border-0" 
+                    allowFullScreen
+                  ></iframe>
                 </div>
               </div>
             </div>

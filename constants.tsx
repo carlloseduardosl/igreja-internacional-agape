@@ -49,27 +49,6 @@ export const SCHEDULE_DATA: EventItem[] = [
 
 export const SPECIAL_EVENTS_DATA: SpecialEvent[] = [
   {
-    id: 'se1',
-    title: 'Grande Vigília',
-    date: '31 de Janeiro de 2026',
-    time: '19:00',
-    location: 'Sítio Nova Aliança',
-    description: 'Uma noite poderosa de clamor, adoração e busca intensa pela presença de Deus.',
-    image: 'https://iili.io/f6jtIqX.jpg',
-    category: 'campanha'
-  },
-  {
-    id: 'se0',
-    title: 'Retiro Ágape 2026',
-    date: '14 a 18 de Fevereiro de 2026',
-    time: 'Check-in à partir das 14:00',
-    location: 'Chalé São Miguel – Valão do Cágado, Itaperuna',
-    description: 'Inscrições até 31 de Janeiro!',
-    image: 'https://iili.io/f4TWm9p.png',
-    category: 'retiro',
-    whatsappLink: 'https://wa.me/5522998484977?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20o%20Retiro%20Ágape%202026.'
-  },
-  {
     id: 'se2',
     title: 'Culto do Discipulado',
     date: '19 de Março de 2026',

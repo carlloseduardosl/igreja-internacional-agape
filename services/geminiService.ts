@@ -1,8 +1,18 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Inicialização seguindo estritamente as diretrizes do SDK
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+let aiInstance: GoogleGenAI | null = null;
+
+const getAI = () => {
+  if (!aiInstance) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error("GEMINI_API_KEY is not defined");
+    }
+    aiInstance = new GoogleGenAI({ apiKey });
+  }
+  return aiInstance;
+};
 
 // Lista de versículos de reserva para garantir que o app nunca fique vazio
 // em caso de erro 429 (Limite de cota excedido) ou falta de internet.
@@ -32,6 +42,7 @@ export const getDailyVerse = async () => {
   const staticVerse = fallbackVerses[fallbackIndex];
 
   try {
+    const ai = getAI();
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: 'Forneça um versículo bíblico inspirador e curto em português para hoje. O texto deve conter apenas o versículo entre aspas e a referência bíblica (Ex: "O Senhor é o meu pastor..." - Salmo 23:1).',
@@ -57,5 +68,28 @@ export const getDailyVerse = async () => {
     }
     
     return staticVerse;
+  }
+};
+
+export const getLatestLiveStreamId = async (channelId: string) => {
+  try {
+    const ai = getAI();
+    const response = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: `Qual é o ID do vídeo da transmissão ao vivo (live) mais recente, ativa ou programada para o canal do YouTube ID ${channelId}? Responda APENAS com o ID do vídeo de 11 caracteres. Se não houver transmissão ativa ou programada, responda "live_stream".`,
+      config: {
+        tools: [{ googleSearch: {} }],
+        temperature: 0,
+      }
+    });
+    
+    const videoId = response.text?.trim();
+    if (videoId && videoId.length === 11 && videoId !== "live_stream") {
+      return videoId;
+    }
+    return "live_stream";
+  } catch (error) {
+    console.error("Erro ao buscar live stream ID:", error);
+    return "live_stream";
   }
 };
